@@ -335,22 +335,21 @@ public class DatabaseConnector {
     }
 
 
-    public static boolean simulatePayment(int userId, int offerId, double amount) {
-        System.out.println("🔹 Symulacja płatności dla użytkownika: " + userId + " | Oferta: " + offerId + " | Kwota: " + amount);
+    public static boolean simulatePayment(int userId, int offerId, double dummyAmount) {
+        String sql = "UPDATE reservations SET payment_status = 'Opłacona', price = (SELECT price FROM offers WHERE id = ?) WHERE user_id = ? AND offer_id = ?";
 
-        String sql = "UPDATE reservations SET payment_status = 'Opłacona' WHERE user_id = ? AND offer_id = ?";
         try (Connection conn = connect();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, userId);
-            stmt.setInt(2, offerId);
-            int rowsAffected = stmt.executeUpdate();
-
-            return rowsAffected > 0; //  Zwraca `true`, jeśli płatność została zarejestrowana
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+            stmt.setInt(1, offerId);
+            stmt.setInt(2, userId);
+            stmt.setInt(3, offerId);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
             return false;
         }
     }
+
 
 
 
@@ -644,28 +643,39 @@ public class DatabaseConnector {
     }
 
     public static int countUniqueUsers() {
-        String sql = "SELECT COUNT(DISTINCT user_id) FROM reservations";
+        int count = 0;
+        String query = "SELECT COUNT(*) FROM users WHERE is_admin = false;\n";
         try (Connection conn = connect();
-             PreparedStatement stmt = conn.prepareStatement(sql);
+             PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
-            return rs.next() ? rs.getInt(1) : 0;
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-            return 0;
         }
+        return count;
     }
 
+
     public static double sumPaidReservations() {
-        String sql = "SELECT SUM(price) FROM reservations WHERE payment_status = 'Opłacona'";
+        double suma = 0.0;
+        String query = "SELECT SUM(price) FROM reservations WHERE TRIM(LOWER(payment_status)) = 'opłacona'";
         try (Connection conn = connect();
-             PreparedStatement stmt = conn.prepareStatement(sql);
+             PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
-            return rs.next() ? rs.getDouble(1) : 0.0;
+            if (rs.next()) suma = rs.getDouble(1);
         } catch (SQLException e) {
             e.printStackTrace();
-            return 0.0;
         }
+        return suma;
     }
+
+
+
+
+
+
 
 
     public static boolean loginExists(String login) {

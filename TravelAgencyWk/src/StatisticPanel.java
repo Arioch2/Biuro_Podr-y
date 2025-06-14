@@ -1,4 +1,5 @@
 import Services.DatabaseConnector;
+import Services.RoundedButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -52,6 +53,24 @@ public class StatisticPanel extends JFrame {
         totalRevenueLabel.setForeground(tekst);
         panel.add(totalRevenueLabel, c);
 
+        //  Przycisk powrotu
+
+        RoundedButton backButton = new RoundedButton("Wyjście", new Color(42, 157, 143), 20);
+        backButton.setPreferredSize(new Dimension(200, 40));
+        backButton.setBackground(akcent);
+        backButton.setForeground(tekst);
+        backButton.setFocusPainted(false);
+        backButton.setFont(wartoscFont);
+        backButton.setBorder(BorderFactory.createLineBorder(akcent.darker(), 1));
+        backButton.addActionListener(e -> {
+            dispose();
+            new AdminMenuPanel();
+        });
+        c.gridy++;
+        panel.add(backButton, c);
+
+
+
 
         // Okno
         setContentPane(panel);
@@ -69,6 +88,9 @@ public class StatisticPanel extends JFrame {
     }
 
     private void loadStats() {
+
+
+
         int total = DatabaseConnector.countReservations();
         int users = DatabaseConnector.countUniqueUsers();
         double revenue = DatabaseConnector.sumPaidReservations();
