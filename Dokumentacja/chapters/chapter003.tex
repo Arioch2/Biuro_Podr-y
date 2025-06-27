@@ -1,0 +1,100 @@
+\chapter{Struktura systemu i baza danych}
+
+\section{Architektura aplikacji}
+
+Aplikacja została opracowana zgodnie z wzorcem projektowym \texttt{MVC} (Model–View–Controller), co zapewnia przejrzysty podział odpowiedzialności pomiędzy poszczególne komponenty systemu:
+
+\begin{itemize}
+    \item \textbf{Model} – klasy reprezentujące struktury danych (np. użytkownik, oferta, rezerwacja),
+    \item \textbf{View} – komponenty interfejsu graficznego zbudowane w oparciu o bibliotekę \texttt{Swing},
+    \item \textbf{Controller} – klasy pośredniczące pomiędzy logiką aplikacji, bazą danych a interfejsem graficznym.
+\end{itemize}
+
+\section{Baza danych}
+
+System przechowuje dane w relacyjnej bazie \textbf{PostgreSQL 15}. Projekt bazy został przygotowany w środowisku \texttt{pgAdmin 4}, a komunikacja z aplikacją odbywa się za pośrednictwem sterownika \texttt{PostgreSQL JDBC} w wersji 42.7.5.
+
+\subsection{Tabela \texttt{users}}
+
+Tabela przechowuje podstawowe informacje rejestracyjne użytkowników:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Kolumna} & \textbf{Typ} & \textbf{Opis} \\ \hline
+id & SERIAL PRIMARY KEY & ID użytkownika \\
+login & VARCHAR(30) UNIQUE & Nazwa logowania \\
+email & VARCHAR(50) UNIQUE & Adres e-mail \\
+password & VARCHAR(100) & Zaszyfrowane hasło \\
+role & VARCHAR(10) & Rola systemowa (\texttt{user} lub \texttt{admin}) \\ \hline
+\end{tabular}
+\caption{Struktura tabeli \texttt{users}}
+\end{table}
+
+\subsection{Tabela \texttt{offers}}
+
+Zawiera dane związane z ofertami turystycznymi:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Kolumna} & \textbf{Typ} & \textbf{Opis} \\ \hline
+id & SERIAL PRIMARY KEY & ID oferty \\
+title & VARCHAR(100) & Nazwa wycieczki \\
+description & TEXT & Szczegóły oferty \\
+price & DECIMAL(10,2) & Cena brutto \\
+start\_date & DATE & Data rozpoczęcia \\
+end\_date & DATE & Data zakończenia \\ \hline
+\end{tabular}
+\caption{Struktura tabeli \texttt{offers}}
+\end{table}
+
+\subsection{Tabela \texttt{reservations}}
+
+Zawiera dane dotyczące dokonanych rezerwacji:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Kolumna} & \textbf{Typ} & \textbf{Opis} \\ \hline
+id & SERIAL PRIMARY KEY & ID rezerwacji \\
+user\_id & INTEGER & Klucz obcy do tabeli \texttt{users} \\
+offer\_id & INTEGER & Klucz obcy do tabeli \texttt{offers} \\
+reservation\_date & TIMESTAMP & Data złożenia rezerwacji \\ \hline
+\end{tabular}
+\caption{Struktura tabeli \texttt{reservations}}
+\end{table}
+
+\section{Diagram relacji encji}
+
+Schemat powiązań między tabelami przedstawiono na rysunku \ref{fig:erd_pgadmin}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{img/erd_pgadmin.png}
+    \caption{Diagram ERD bazy danych PostgreSQL (wygenerowany w pgAdmin 4)}
+    \label{fig:erd_pgadmin}
+\end{figure}
+
+\section{Organizacja pakietów i klas aplikacji}
+
+Struktura katalogowa projektu została podzielona zgodnie z zasadami separacji odpowiedzialności:
+
+\begin{itemize}
+    \item \texttt{model} – klasy reprezentujące dane: \texttt{User.java}, \texttt{Offer.java}, \texttt{Reservation.java},
+    \item \texttt{dao} – warstwa dostępu do danych: \texttt{UserDAO.java}, \texttt{OfferDAO.java},
+    \item \texttt{gui} – komponenty interfejsu użytkownika: \texttt{LoginPanel.java}, \texttt{RegisterPanel.java}, \texttt{OffertsPanel.java},
+    \item \texttt{util} – klasy pomocnicze: \texttt{DbConnector.java}, \texttt{Validator.java}.
+\end{itemize}
+
+Uproszczony diagram klas zaprezentowano na rysunku \ref{fig:class_diagram}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{img/class_diagram.png}
+    \caption{Diagram klas aplikacji}
+    \label{fig:class_diagram}
+\end{figure}

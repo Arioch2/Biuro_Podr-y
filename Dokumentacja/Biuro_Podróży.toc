@@ -1,0 +1,32 @@
+\babel@toc {polish}{}\relax 
+\contentsline {chapter}{\numberline {1}Wprowadzenie}{6}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Cel i zakres projektu}{6}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Wymagania systemowe}{6}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Zastosowane technologie}{6}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Interfejs użytkownika i funkcjonalności}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Logowanie i rejestracja użytkownika}{7}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Panel użytkownika i oferty turystyczne}{8}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Filtrowanie według daty i ceny}{10}{subsection.2.2.1}%
+\contentsline {section}{\numberline {2.3}Panel administratora}{11}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Walidacja danych}{11}{section.2.4}%
+\contentsline {chapter}{\numberline {3}Struktura systemu i baza danych}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Architektura aplikacji}{13}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Baza danych}{13}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Tabela \texttt {users}}{13}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Tabela \texttt {offers}}{13}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Tabela \texttt {reservations}}{14}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Diagram relacji encji}{14}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Organizacja pakietów i klas aplikacji}{15}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Harmonogram, testy i podsumowanie}{16}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Harmonogram realizacji projektu}{16}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Repozytorium i wersjonowanie}{16}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Testowanie aplikacji}{17}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Walidacja danych wejściowych}{17}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Połączenie z bazą danych}{17}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Podsumowanie i wnioski}{18}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Pozostałe widoki aplikacji}{19}{section.4.5}%
+\contentsline {section}{\textbf {Bibliografia}}{23}{figure.caption.19}%
+\contentsline {section}{\textbf {Spis rysunków}}{24}{chapter*.20}%
+\contentsline {section}{\textbf {Spis tabel}}{25}{chapter*.20}%
+\contentsline {section}{\textbf {Spis listingów}}{26}{chapter*.20}%
+\contentsline {section}{\textbf {Oświadczenie studenta o samodzielności pracy}}{27}{chapter*.22}%
