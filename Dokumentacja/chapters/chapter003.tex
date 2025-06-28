@@ -1,0 +1,53 @@
+\chapter{Harmonogram i zarządzanie projektem}
+\label{cha:Harmonogram i zarządzanie projektem}
+
+Proces realizacji projektu został rozplanowany w sposób etapowy, z uwzględnieniem projektowania bazy danych, implementacji funkcjonalności aplikacji, testowania oraz przygotowania dokumentacji. W niniejszym rozdziale przedstawiono harmonogram prac, opis wykorzystanego systemu kontroli wersji oraz graficzną reprezentację przebiegu projektu.
+
+Podział zadań i organizacja pracy miały na celu sprawną realizację założeń projektowych przy zachowaniu przejrzystości etapów i kontroli postępów. Poszczególne zadania były wykonywane w sposób iteracyjny, przy czym szczególny nacisk położono na testowanie aplikacji oraz zachowanie jej spójności z dokumentacją.
+
+% ------------------------------------------------------------------------
+
+\section{Etapy realizacji}
+
+Proces tworzenia aplikacji został podzielony na trzy główne etapy, obejmujące kolejno: projektowanie, implementację oraz testowanie i dokumentację. Harmonogram został dostosowany do założeń semestralnych, a prace były prowadzone iteracyjnie z możliwością nanoszenia poprawek na bieżąco.
+
+\begin{itemize}
+    \item \textbf{Etap 1 – Projektowanie}  
+    Obejmował analizę wymagań funkcjonalnych, opracowanie struktury bazy danych, określenie architektury aplikacji oraz zaprojektowanie głównych komponentów interfejsu użytkownika. Ten etap zrealizowano w pierwszej połowie maja 2025 roku.
+
+    \item \textbf{Etap 2 – Implementacja}  
+    Polegał na tworzeniu kodu aplikacji w języku Java, budowie GUI z użyciem biblioteki Swing oraz integracji z bazą danych PostgreSQL przy wykorzystaniu JDBC. Prace koncentrowały się także na podziale funkcji pomiędzy użytkownika a administratora. Etap realizowano od połowy maja do początku czerwca 2025 roku.
+
+    \item \textbf{Etap 3 – Testowanie i dokumentacja}  
+    Ostatnia faza obejmowała testy ręczne oraz przygotowanie wybranych testów jednostkowych dla krytycznych klas. Równolegle tworzono dokumentację techniczną zgodną z przyjętym szablonem uczelnianym. Etap zakończył się w drugiej połowie czerwca 2025 roku.
+\end{itemize}
+
+% ------------------------------------------------------------------------
+
+\section{Diagram Gantta}
+
+W celu zobrazowania przebiegu realizacji poszczególnych etapów projektu przygotowano diagram Gantta, który przedstawia planowany oraz rzeczywisty harmonogram działań w ramach projektu. Diagram umożliwia szybki podgląd czasu trwania każdego z etapów oraz ich wzajemnych zależności czasowych.
+
+Na Rys. \ref{fig:gantt_diagram} przedstawiono przebieg prac nad projektem aplikacji biura podróży w układzie tygodniowym.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{img/gantt.png}
+    \caption{Diagram Gantta przedstawiający harmonogram realizacji projektu}
+    \label{fig:gantt_diagram}
+\end{figure}
+
+% ------------------------------------------------------------------------
+
+\section{Repozytorium GitHub i wersjonowanie}
+
+Podczas realizacji projektu wykorzystano system kontroli wersji \texttt{Git}, który umożliwia śledzenie zmian w kodzie źródłowym, cofanie się do wcześniejszych wersji oraz pracę w gałęziach rozwojowych bez ryzyka naruszenia głównej wersji aplikacji. Przechowywanie historii wersji pozwoliło również na lepszą organizację pracy oraz bieżące wprowadzanie poprawek bez utraty stabilnych funkcjonalności.
+
+Kod źródłowy aplikacji umieszczono w publicznym repozytorium platformy GitHub. Główna gałąź \texttt{main} zawiera stabilną wersję aplikacji, natomiast w trakcie prac wykorzystywano również tymczasowe gałęzie robocze, m.in. \texttt{gui}, \texttt{dao\_integration} oraz \texttt{fixes}, które służyły do rozwijania poszczególnych modułów.
+
+Adres repozytorium projektu:
+\begin{center}
+\url{https://github.com/Arioch2/Biuro_Podr-y}
+\end{center}
+
+Zastosowanie systemu Git zapewniło pełną kontrolę nad projektem i umożliwiło jego bezpieczne rozwijanie w trybie iteracyjnym.

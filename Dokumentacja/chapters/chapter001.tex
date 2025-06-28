@@ -1,0 +1,53 @@
+\chapter{Wprowadzenie}
+\label{cha:wprowadzenie}
+
+%---------------------------------------------------------------------------
+
+\section{Streszczenie w języku polskim}
+\label{sec:Streszczenie w języku polskim}
+
+Głównym celem projektu było opracowanie desktopowej aplikacji wspierającej obsługę rezerwacji w biurze podróży. System składa się z dwóch głównych modułów: interfejsu dla użytkownika oraz panelu administracyjnego. Użytkownik może rejestrować się, logować, przeglądać dostępne oferty wycieczek oraz dokonywać rezerwacji. Administrator natomiast posiada możliwość zarządzania ofertami, użytkownikami oraz wgląd w aktywne rezerwacje i podstawowe statystyki.
+
+Aplikacja została napisana w języku Java, a do budowy graficznego interfejsu użytkownika wykorzystano bibliotekę Swing. Dane przechowywane są w relacyjnej bazie danych PostgreSQL. Komunikacja z bazą została zrealizowana przy użyciu sterownika JDBC oraz wzorca projektowego DAO, co pozwoliło na oddzielenie warstwy dostępu do danych od logiki biznesowej aplikacji. Struktura systemu oraz przyjęte rozwiązania technologiczne sprzyjają łatwemu rozbudowywaniu i utrzymaniu kodu.
+
+\section{Summary in English}
+\label{sec:Summary in English}
+
+The aim of this project was to design and implement a desktop application for managing travel bookings in a fictional travel agency. The system offers two main access levels: a user panel and an administrator interface. Users can browse available offers, make reservations, and manage their personal accounts. Administrators have access to extended system features, including offer management, user accounts, and system statistics.
+
+The application was developed in Java using the Swing library for the graphical user interface. PostgreSQL 15 was used as the database management system. Communication with the database is handled via JDBC and the DAO design pattern. The accompanying documentation was created using \LaTeX{}. The project combines practical aspects of database design, object-oriented programming, and software engineering.
+
+
+%---------------------------------------------------------------------------
+
+\section{Zakres i funkcjonalności aplikacji}
+\label{sec:Zakres i funkcjonalności aplikacji}
+
+Aplikacja została zaprojektowana z myślą o dwustronnej obsłudze procesu rezerwacji: od strony użytkownika oraz administratora systemu. Zakres funkcjonalności obejmuje kluczowe operacje związane z przeglądaniem ofert wycieczek, rejestracją klientów, zarządzaniem danymi oraz obsługą rezerwacji.
+
+Użytkownik po zalogowaniu ma możliwość filtrowania ofert według daty oraz zakresu cenowego, składania rezerwacji, przeglądania ich historii, zmiany danych konta oraz usunięcia profilu. Z kolei administrator otrzymuje dostęp do zaawansowanego panelu zarządzania, w którym może dodawać, edytować i usuwać oferty, przeglądać oraz modyfikować dane użytkowników, a także analizować statystyki systemowe, takie jak liczba aktywnych rezerwacji.
+
+Zakres funkcjonalny systemu obejmuje między innymi:
+\begin{itemize}
+    \item rejestrację i logowanie użytkowników z walidacją danych,
+    \item przeglądanie i filtrowanie ofert wycieczek,
+    \item tworzenie oraz usuwanie rezerwacji,
+    \item zarządzanie użytkownikami i ofertami przez administratora,
+    \item wgląd w podstawowe statystyki systemowe.
+\end{itemize}
+
+Projekt nie przewiduje integracji z systemami płatności ani obsługi zewnętrznych dostawców ofert. Całość operacji ogranicza się do środowiska lokalnego i została przygotowana do demonstracji funkcjonalnej.
+
+%---------------------------------------------------------------------------
+
+\section{Zastosowane technologie}
+\label{sec:zawartoscPracy}
+
+Do realizacji projektu wykorzystano zestaw sprawdzonych technologii i narzędzi, umożliwiających stworzenie stabilnej i funkcjonalnej aplikacji desktopowej. Głównym językiem programowania była Java w wersji 17, a za budowę graficznego interfejsu odpowiadała biblioteka Swing, będąca częścią standardowej biblioteki JDK.
+
+W celu przechowywania danych wykorzystano relacyjną bazę danych PostgreSQL w wersji 15, zarządzaną za pomocą narzędzia pgAdmin 4. Komunikacja między aplikacją a bazą danych została zrealizowana z wykorzystaniem sterownika PostgreSQL JDBC. Struktura połączenia oraz wykonywanie zapytań odbywa się przy użyciu wzorca DAO (Data Access Object), co pozwala na zachowanie separacji warstw oraz ułatwia testowanie i dalszy rozwój aplikacji.
+
+W zakresie dokumentacji zastosowano system \LaTeX{}, umożliwiający tworzenie sformatowanego i zgodnego z wymaganiami dokumentu końcowego. Kod źródłowy był wersjonowany przy użyciu systemu kontroli wersji Git, a repozytorium projektu udostępniono na platformie GitHub.
+
+
+

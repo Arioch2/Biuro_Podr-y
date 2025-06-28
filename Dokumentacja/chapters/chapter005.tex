@@ -1,0 +1,50 @@
+\chapter{Prezentacja warstwy użytkowej projektu}
+\label{cha:Prezentacja warstwy użytkowej projektu}
+
+Interfejs użytkownika został zrealizowany w technologii \texttt{Swing}, należącej do biblioteki \texttt{Java Foundation Classes}. Wybór tej technologii umożliwił stworzenie responsywnych i spójnych wizualnie okien aplikacji, które poprawnie działają niezależnie od systemu operacyjnego. Projekt graficzny interfejsu został zaplanowany w taki sposób, by zachować jednolity styl komponentów oraz logiczne rozmieszczenie poszczególnych elementów, takich jak formularze, przyciski akcji czy tabele danych.
+
+Kluczowym założeniem projektowym była prostota i intuicyjność obsługi — interfejs został zaprojektowany z myślą o użytkownikach nietechnicznych, dzięki czemu nawigacja między widokami i wykonywanie akcji (takich jak logowanie, rejestracja czy filtrowanie ofert) jest maksymalnie uproszczone. Wszystkie najważniejsze funkcje aplikacji są dostępne z poziomu głównego panelu użytkownika, bez konieczności przechodzenia przez złożone menu.
+
+W ramach aplikacji wyróżniono dwie grupy ról, które mają przypisane zróżnicowane uprawnienia i zakres widocznych funkcji w interfejsie:
+\begin{itemize}
+    \item \textbf{Użytkownik} — posiada dostęp do ekranu logowania i rejestracji, może przeglądać listę dostępnych ofert (z możliwością filtrowania po nazwie, przedziale cenowym itp.), rezerwować wybraną ofertę, przeglądać historię rezerwacji oraz edytować dane swojego konta i hasła.
+    \item \textbf{Administrator} — po uwierzytelnieniu zyskuje dodatkowe funkcjonalności: zarządzanie bazą użytkowników, edycję lub usuwanie ofert, przegląd statystyk systemu (liczba zarejestrowanych kont, aktywne rezerwacje), a także możliwość ręcznego nadzorowania konta danego użytkownika.
+\end{itemize}
+
+Na poniższych ilustracjach przedstawiono wybrane widoki interfejsu — zarówno od strony użytkownika, jak i administratora — ukazujące najważniejsze moduły i funkcjonalności systemu.
+
+\noindent
+{\small \textbf{Opis:} Na rys.~\ref{fig:login_form} przedstawiono ekran logowania, który umożliwia użytkownikowi uwierzytelnienie się w systemie za pomocą zarejestrowanego adresu e-mail oraz hasła. Interfejs jest minimalistyczny, co pozwala na szybki dostęp do pozostałych funkcji aplikacji po poprawnym zalogowaniu. W przypadku błędnych danych użytkownik otrzymuje informację o niepowodzeniu.}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{img/login_form.png}
+    \caption{Ekran logowania użytkownika}
+    \label{fig:login_form}
+\end{figure}
+
+\noindent
+{\small \textbf{Opis:} Rys.~\ref{fig:offer_panel} prezentuje panel główny użytkownika, w którym wyświetlana jest lista dostępnych ofert z możliwością filtrowania oraz sortowania. Z tego poziomu użytkownik może również przejść do szczegółów oferty i sfinalizować rezerwację.}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{img/offer_list_panel.png}
+    \caption{Panel użytkownika z listą ofert}
+    \label{fig:offer_panel}
+\end{figure}
+
+\noindent
+{\small \textbf{Opis:} Formularz rejestracji, zaprezentowany na rys.~\ref{fig:register_form}, umożliwia utworzenie nowego konta w systemie. Wymagane dane obejmują imię, nazwisko, adres e-mail oraz hasło. System weryfikuje poprawność danych, a po pomyślnym zakończeniu procesu użytkownik może się zalogować.}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{img/register_form.png}
+    \caption{Formularz rejestracji nowego konta}
+    \label{fig:register_form}
+\end{figure}
+
+\noindent
+{\small \textbf{Opis:} Na rys.~\ref{fig:admin_panel} przedstawiono panel administratora — centralne miejsce zarządzania systemem. Pozwala on na przeglądanie statystyk, edycję i usuwanie ofert oraz zarządzanie kontami użytkowników. Interfejs operuje na tabelarycznych zestawieniach, co ułatwia szybkie podejmowanie decyzji administracyjnych.}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{img/admin_panel.png}
+    \caption{Panel administratora — zarządzanie systemem}
+    \label{fig:admin_panel}
+\end{figure}

@@ -1,0 +1,78 @@
+\chapter{Projekt systemu}
+\label{cha:Projekt systemu}
+
+Celem projektowania systemu było opracowanie przejrzystej i skalowalnej struktury aplikacji, która oddziela logikę biznesową od warstwy interfejsu użytkownika oraz dostępu do danych. W tym rozdziale przedstawiono architekturę aplikacji, strukturę pakietów i klas, a także projekt bazy danych i relacje pomiędzy encjami.
+
+Projekt został oparty o wzorzec MVC (Model–View–Controller), co pozwoliło na logiczne rozdzielenie odpowiedzialności poszczególnych komponentów. Model odpowiada za reprezentację danych, kontroler obsługuje logikę programu i komunikację z bazą danych, natomiast warstwa widoku (View) odpowiada za interakcję z użytkownikiem za pomocą komponentów graficznych Swing.
+
+Baza danych została zaprojektowana w systemie PostgreSQL 15 i zarządzana za pomocą narzędzia pgAdmin 4. W jej strukturze wyróżniono trzy podstawowe tabele: użytkownicy (\texttt{users}), oferty (\texttt{offers}) oraz rezerwacje (\texttt{reservations}). Pomiędzy tymi encjami występują relacje jeden-do-wielu, umożliwiające przypisanie wielu rezerwacji do jednego użytkownika oraz wielu rezerwacji do jednej oferty.
+
+Struktura aplikacji została zorganizowana w pakiety logiczne, m.in. \texttt{model} (klasy encji), \texttt{dao} (dostęp do bazy danych), \texttt{gui} (komponenty interfejsu użytkownika) oraz \texttt{util} (klasy pomocnicze, np. do walidacji). Takie podejście pozwala na łatwe utrzymanie kodu, jego testowanie oraz dalszy rozwój systemu w przyszłości.
+
+%---------------------------------------------------------------------------
+
+\section{Architektura aplikacji}
+\label{sec:Architektura aplikacji}
+
+Aplikacja została zbudowana zgodnie z architekturą trójwarstwową, opartą na wzorcu projektowym MVC (Model–View–Controller). Taki podział umożliwia przejrzyste rozdzielenie odpowiedzialności pomiędzy warstwami systemu, co znacząco ułatwia jego rozwój, testowanie oraz utrzymanie.
+
+\begin{itemize}
+    \item \textbf{Warstwa Modelu (Model)} — odpowiada za reprezentację danych oraz logikę aplikacyjną. W jej skład wchodzą klasy odpowiadające encjom, takim jak użytkownik, oferta czy rezerwacja.
+    
+    \item \textbf{Warstwa Widoku (View)} — stanowi interfejs graficzny użytkownika zbudowany w oparciu o komponenty biblioteki Swing. Odpowiada za prezentację danych oraz interakcję z użytkownikiem.
+    
+    \item \textbf{Warstwa Kontrolera (Controller)} — pośredniczy pomiędzy widokiem a logiką aplikacji. Obsługuje zdarzenia generowane przez użytkownika oraz komunikuje się z bazą danych za pomocą warstwy DAO.
+\end{itemize}
+
+Logika dostępu do danych została zrealizowana poprzez wzorzec DAO (Data Access Object), który umożliwia wykonywanie zapytań SQL w sposób odseparowany od interfejsu użytkownika. Dzięki temu poszczególne komponenty systemu są niezależne, a zmiany w jednej warstwie nie powodują konieczności modyfikacji pozostałych.
+
+Połączenia z bazą danych PostgreSQL są obsługiwane przez dedykowaną klasę pomocniczą, która zarządza inicjalizacją oraz zamykaniem połączeń w bezpieczny sposób. Struktura aplikacji została zaprojektowana tak, aby umożliwić łatwą integrację dodatkowych funkcjonalności w przyszłości, np. obsługi e-maili, generowania raportów lub eksportu danych do zewnętrznych formatów.
+
+%---------------------------------------------------------------------------
+
+
+% ------------------------
+\section{Struktura klas i pakietów}
+\label{sec:Struktura klas i pakietów}
+
+Aplikacja została podzielona logicznie na kilka pakietów, z których każdy odpowiada za określony zakres funkcjonalności systemu. Taki podział pozwala zachować porządek w projekcie, ułatwia nawigację po kodzie oraz wspiera zasadę separacji odpowiedzialności.
+
+Podstawowe pakiety projektu to:
+
+\begin{itemize}
+    \item \texttt{model} — zawiera klasy odwzorowujące dane wykorzystywane w aplikacji, m.in. \texttt{User}, \texttt{Offer} oraz \texttt{Reservation}. Każda z tych klas odpowiada strukturze tabeli w bazie danych.
+    
+    \item \texttt{dao} — odpowiada za komunikację z bazą danych. W skład tego pakietu wchodzą klasy takie jak \texttt{UserDAO}, \texttt{OfferDAO} i \texttt{ReservationDAO}, które realizują operacje CRUD (tworzenie, odczyt, aktualizacja, usuwanie).
+    
+    \item \texttt{gui} — zawiera komponenty graficzne zbudowane przy użyciu biblioteki Swing. Znajdują się tu m.in. panele logowania, rejestracji, zarządzania ofertami, przeglądania rezerwacji oraz interfejs administracyjny.
+    
+    \item \texttt{util} — obejmuje klasy pomocnicze, takie jak \texttt{DatabaseConnector} (nawiązywanie połączenia z bazą danych) oraz \texttt{Validator} (walidacja danych wejściowych).
+\end{itemize}
+
+Każdy z pakietów realizuje konkretne zadania, co zapewnia przejrzystość kodu oraz ułatwia jego rozwój i testowanie. Podejście to umożliwia również potencjalną refaktoryzację poszczególnych modułów bez ryzyka naruszenia działania pozostałych części systemu.
+
+%---------------------------------------------------------------------------
+
+\section{Model bazy danych (ERD, opisy tabel)}
+\label{sec:Model bazy danych (ERD, opisy tabel)}
+
+Projekt systemu wykorzystuje relacyjną bazę danych PostgreSQL w wersji 15 do przechowywania informacji o użytkownikach, ofertach oraz dokonanych rezerwacjach. Strukturę zaprojektowano zgodnie z zasadami poprawnej normalizacji oraz przejrzystej relacji pomiędzy tabelami. Dodatkowo uwzględniono możliwość skalowania bazy w przyszłości.
+
+Baza danych składa się z trzech podstawowych tabel:
+
+\begin{itemize}
+    \item \texttt{users} — przechowuje informacje o kontach użytkowników (login, adres e-mail, hasło, rola systemowa),
+    \item \texttt{offers} — zawiera dane na temat dostępnych wycieczek (nazwa, opis, cena, data rozpoczęcia i zakończenia),
+    \item \texttt{reservations} — rejestruje dokonywane rezerwacje i łączy użytkowników z wybranymi ofertami.
+\end{itemize}
+
+Pomiędzy tabelami istnieją relacje typu jeden-do-wielu — jeden użytkownik może złożyć wiele rezerwacji, podobnie jak jedna oferta może być wielokrotnie rezerwowana przez różnych użytkowników. Spójność danych zapewniają klucze główne i obce.
+
+Schemat logiczny bazy danych przedstawiono na Rys. \ref{fig:erd_pgadmin}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/erd_pgadmin.png}
+    \caption{Diagram ERD bazy danych PostgreSQL}
+    \label{fig:erd_pgadmin}
+\end{figure}

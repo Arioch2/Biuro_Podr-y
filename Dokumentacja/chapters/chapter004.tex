@@ -1,0 +1,64 @@
+\chapter{Struktura pracy projektowej z Programowania Obiektowego JAVA}
+\label{cha:elementyPracyproj}
+
+% ********************
+% ------------------------------------------------------------------------
+
+
+
+\section{Opis założeń projektu}
+
+Głównym celem projektu było opracowanie desktopowej aplikacji wspierającej obsługę rezerwacji w fikcyjnym biurze podróży. System został zaprojektowany jako dwumodułowy: użytkownik końcowy otrzymuje funkcjonalności umożliwiające rejestrację, logowanie, przeglądanie i filtrowanie ofert oraz tworzenie rezerwacji, natomiast administrator uzyskuje dostęp do rozszerzonego panelu zarządzania danymi i statystykami.
+
+Motywacją do realizacji projektu była potrzeba praktycznego zastosowania zdobytej wiedzy z zakresu programowania w języku Java, obsługi baz danych PostgreSQL oraz budowy graficznego interfejsu użytkownika w środowisku Swing. Projekt umożliwił również pracę zgodnie z zasadami inżynierii oprogramowania, w tym wykorzystanie wzorca DAO oraz dokumentację systemu zgodną ze standardami akademickimi.
+
+% ------------------------------------------------------------------------
+
+\section{Zakres i funkcjonalności}
+
+System umożliwia obsługę procesu rezerwacji z punktu widzenia dwóch ról: użytkownika oraz administratora. W zakresie funkcjonalnym znajdują się m.in.:
+
+\begin{itemize}
+    \item rejestracja i logowanie z walidacją danych,
+    \item przeglądanie oraz filtrowanie ofert według daty i ceny,
+    \item tworzenie i usuwanie rezerwacji,
+    \item możliwość modyfikacji danych konta,
+    \item panel administracyjny z zarządzaniem użytkownikami, ofertami i rezerwacjami,
+    \item wgląd w podstawowe statystyki systemowe.
+\end{itemize}
+
+System nie zawiera integracji z płatnościami online, a wszystkie operacje wykonywane są lokalnie, co ułatwia testowanie i wdrożenie demonstracyjne.
+
+% ------------------------------------------------------------------------
+
+\section{Zastosowane technologie}
+
+Projekt został zrealizowany z wykorzystaniem nowoczesnych narzędzi programistycznych, które umożliwiły implementację kompletnego systemu rezerwacji działającego lokalnie jako aplikacja desktopowa. Dobór technologii został dokonany z uwzględnieniem wydajności, stabilności oraz dostępności bibliotek wspierających rozwój w środowisku Java.
+
+\begin{itemize}
+    \item \textbf{Java 17} — główny język programowania aplikacji, oferujący możliwości programowania obiektowego, obsługę wyjątków oraz dostęp do bibliotek zewnętrznych niezbędnych do pracy z interfejsem graficznym i bazą danych.
+    
+    \item \textbf{Swing} — biblioteka graficzna wykorzystywana do budowy interfejsu użytkownika. Umożliwia tworzenie komponentów okienkowych takich jak przyciski, tabele, formularze oraz panele nawigacyjne.
+    
+    \item \textbf{PostgreSQL 15} — relacyjny system zarządzania bazą danych, wykorzystywany do przechowywania informacji o użytkownikach, ofertach i rezerwacjach. System zapewnia stabilność oraz szerokie wsparcie dla operacji SQL.
+    
+    \item \textbf{JDBC (Java Database Connectivity)} — interfejs umożliwiający komunikację pomiędzy aplikacją a bazą danych PostgreSQL. Odpowiada za przesyłanie zapytań, pobieranie danych oraz ich aktualizację.
+    
+    \item \textbf{DAO (Data Access Object)} — wzorzec projektowy użyty do oddzielenia warstwy logiki aplikacji od logiki dostępu do danych. Pozwala na lepsze testowanie oraz rozwój systemu w przyszłości.
+    
+    \item \textbf{pgAdmin 4} — graficzne narzędzie służące do projektowania i administracji bazą danych PostgreSQL. Wykorzystano je m.in. do tworzenia schematu ERD oraz testowania zapytań SQL.
+    
+    \item \textbf{Git i GitHub} — system kontroli wersji (Git) oraz zdalne repozytorium kodu (GitHub), umożliwiające śledzenie zmian, pracę w gałęziach tematycznych oraz współdzielenie kodu źródłowego.
+    
+    \item \textbf{\LaTeX{}} — system składu tekstu użyty do opracowania dokumentacji technicznej projektu. Umożliwia tworzenie spójnych, profesjonalnych rozdziałów, tabel, rysunków oraz bibliografii.
+\end{itemize}
+
+Dobór technologii został ukierunkowany na stabilność i przejrzystość, a każda z nich odegrała istotną rolę w realizacji funkcjonalnych celów aplikacji.
+
+% ------------------------------------------------------------------------
+
+\section{Opis struktury projektu}
+
+Aplikacja została zrealizowana w oparciu o trójwarstwową architekturę zgodną z wzorcem projektowym Model–View–Controller (MVC), co umożliwia rozdzielenie logiki aplikacji, interfejsu graficznego oraz dostępu do danych. Warstwa modelu odpowiada za reprezentację encji i operacje biznesowe, widok za prezentację i interakcję z użytkownikiem, natomiast kontroler za obsługę zdarzeń i komunikację z bazą danych przy użyciu wzorca DAO. Poszczególne warstwy zostały zaimplementowane w osobnych pakietach, co zapewnia modularność i ułatwia rozwój aplikacji w przyszłości. Szczegółowy opis struktury systemu znajduje się w rozdziale 2.1
+% ------------------------------------------------------------------------
+
